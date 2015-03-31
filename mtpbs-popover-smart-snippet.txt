@@ -1,0 +1,27 @@
+{% comment %}
+<!-- SmartSnippets Variables
+h1=TextField
+
+img=TextField
+filer:/media/snippet-widgets/css/filer-field.css, filer:/media/snippet-widgets/js/filer-field.js, snippet-widgets/fileroptionalimage.html
+
+text=TextField
+
+url=TextField
+-->
+{% endcomment %}
+{% load sekizai_tags %}
+{% addtoblock "js" %}
+<script>
+    $(document).ready(function() {
+        
+            $('#shadow').show();
+      
+            popup = window.open("", "name", "width=400, height=270, scrollbars=0");
+        popup.document.write('<html><body><div style="font-family: Verdana, Geneva, sans-serif; line-height: 1.6em; font-weight: 400; font-size:14px; color: #222;border:1px solid #dddddd; padding: 15px; margin:15px;"><img src="{{img}}" style="width:200px;"/><h1 style="color:#541357; font-size:22px;">{{h1}}</h1><p>{{text}}</p> <a href="{{url}}" style="background:#541357; display:inline-block;padding:10px 15px;color:#fff; font-weight:bold; text-decoration:none;" target="_new">Learn more</a> <p style="color:#333; font-size:11px; float:right; margin-left:10px;"><a href="javascript:self.close();" style="color:#333;">No thanks</a></p></div></body></html>');
+            popup.onbeforeunload = function() { $('#shadow').hide();}
+        })
+</script>        
+{% endaddtoblock %}
+
+<div id="shadow" class="abs top dark hide fullHeight fullWidth center">Click X to close</div>
